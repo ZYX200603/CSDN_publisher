@@ -1,0 +1,22 @@
+# ---- 二进制与行尾 ----
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# ---- 源码与文档：统一 LF ----
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.txt text eol=lf
+*.mmd text eol=lf
+
+# ---- 二进制资源 ----
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.db binary
+*.sqlite binary
+*.sqlite3 binary

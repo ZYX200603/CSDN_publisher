@@ -1,0 +1,22 @@
+自测工作区: <项目根目录>\exp\_selftest_ws
+
+########## 第一轮：宽松 spec（只要求「产物存在 + 有个 ok 字样」）##########
+
+=== 场景 1：只改了代码，忘了跑测试 ===
+  [PASS] L1 产物存在      out/report.json 存在
+  [PASS] L2 内容断言      out/report.json：含 '"status": "ok"'
+  → 结论：交付可接受（2 项检查通过）
+
+=== 场景 2：文件写了，但内容是占位符 ===
+  [PASS] L1 产物存在      out/report.json 存在
+  [FAIL] L2 内容断言      out/report.json：不含 'TODO'
+  → 结论：交付不可接受（1 项失败）
+
+=== 场景 3：测试过了，但把断言删了 ===
+  [PASS] L1 产物存在      out/report.json 存在
+  [PASS] L3 命令可验证     `python -c "import sys; sys.exit(0)"` 退出码 0（期望 0）
+  → 结论：交付可接受（2 项检查通过）
+
+=== 场景 4：改动越界（动了不该动的文件） ===
+  [PASS] L1 产物存在      out/report.json 存在
+  [FAIL] L4 差异可审查     改动 3 个文件，越界：['src_leak.py', 'tests/']

@@ -1,0 +1,14 @@
+flowchart TD
+    Q["用户问题<br/>25 道中文评测题"] --> C["切片<br/>256 / 512 / 1024 字符<br/>重叠 64"]
+    C --> B["BM25<br/>字符 bigram + ASCII 词"]
+    C --> V["向量检索<br/>bge-m3 余弦相似度"]
+    B --> F["RRF 融合重排<br/>两路各取 top-20"]
+    V --> F
+    F --> K["取前 k 个切片<br/>k = 1 / 3 / 5 / 10"]
+    K --> P["拼进 Prompt"]
+    K --> M["判分：前 k 个切片里<br/>是否含答案关键词"]
+    M --> R["recall@k · MRR<br/>成本：前 5 切片字符数"]
+    classDef best fill:#dcfce7,stroke:#16a34a,stroke-width:2px
+    classDef bad fill:#fee2e2,stroke:#dc2626,stroke-width:2px
+    class F best
+    class M bad

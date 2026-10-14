@@ -1,0 +1,30 @@
+{
+  "_说明": "all = 所有文章共用同一套 search（只填 search 和 count，其余全自动）。当前主题：二叉树算法（基础概念 → 遍历 → 二叉搜索树）。换主题只改 keywords，并注意 prepare 不会覆盖已存在的 posts/article-*.md，旧正文要自己重写。",
+
+  "prependFile": "templates\\start.txt",
+  "coverFooter": "<你的昵称>",
+  "maxTags": 4,
+
+  "search": {
+    "keywords": ["二叉树", "二叉树的遍历", "二叉搜索树"],
+    "minViews": 5000,
+    "wantSources": 6
+  },
+
+  "count": 1,
+
+  "category": "",
+
+  "_summary说明": "只发一篇，所以直接把摘要写死在顶层；多篇时删掉这行、改用每篇自己的 summary，或留 auto。",
+  "summary": "用一棵示例树串起二叉树的核心：递归序视角下的前中后序遍历（附三种迭代写法与层序 BFS）、由前序+中序还原树的哈希优化，以及二叉搜索树的查找、插入、删除三种情况与验证陷阱，最后给复杂度对比和退化分析。",
+
+  "_cover说明": "顶层 cover 是所有文章的默认值（单篇写了以单篇为准）：\"\" = 不要封面；删掉这一行 = 自动生成一张；\"file:xx.png\" = 用指定图片。",
+  "cover": "",
+
+  "publish": {
+    "_说明": "on = yes 直接发布到博客；no 只保存到 CSDN 草稿箱（标签/摘要/栏目照样填好）。删掉 on 则退回下面的 dryRun/draft。",
+    "on": "no",
+    "dryRun": false,
+    "draft": false
+  }
+}

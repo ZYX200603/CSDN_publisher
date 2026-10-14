@@ -1,0 +1,67 @@
+{
+  "_说明": "复盘配置。每天复盘只需要改这个文件（或命令行 --day 覆盖），不要再为某一天新建脚本。day=null 表示自动取最新快照所在日。脚本固定用 csdn_retro.py probe/build/analyze/compare。",
+  "day": null,
+  "paths": {
+    "_说明": "相对路径基于项目根。{day} 会被替换成上面的 day。",
+    "statsDir": "output/stats",
+    "snapshots": [
+      "output/stats/snapshots"
+    ],
+    "trustFileTpl": "output/article-truth-{day}.json",
+    "datasetOutTpl": "output/stats/retro-{day}-dataset.json",
+    "historyDataset": "output/stats/retro-3d-dataset.json",
+    "localSearchGlobs": [
+      "output/job/*/final/*.md",
+      "posts/*.md"
+    ]
+  },
+  "window": {
+    "_说明": "mode=single-day 只取 day 当天；mode=since 取该时刻之后所有文章（跨天复盘用）。",
+    "mode": "single-day",
+    "since": null,
+    "excludeTitleContains": []
+  },
+  "localFiles": {
+    "_说明": "标题关键词 -> 本地正文路径。一般不用填：脚本会用 localSearchGlobs 里的 md 的 front matter title 精确自动匹配。只有当一篇标题对应多个/特殊位置时才在这里显式指定。"
+  },
+  "topic": {
+    "_说明": "标题关键词 -> 主题名，优先级最高。主要用于两类：本地 md 没有 category 字段的、以及线上直接写的（没有本地源文件的）。其余文章自动用 md 的 category（经 topicNormalize 归一化）。",
+    "二叉树": "算法",
+    "CSDN文章怎么发": "运营复盘"
+  },
+  "_注释_baselines": "固定基线：某批文章在某个快照时刻的阅读（用于同龄对比）。数组元素 {batch, snap, label}。新批次发布后按需追加一条。历史基线不要删。",
+  "baselines": [],
+  "sameAge": {
+    "_说明": "同龄参照：当前这批处在「发布后 X 小时」时，历史批在同龄的阅读中位。minAgeRatio 用于剔除'刚发布就被快照到'的过早观测。",
+    "refBatches": [],
+    "minAgeRatio": 0.6,
+    "toleranceH": 0.3
+  },
+  "extrapolation": {
+    "_说明": "24h 外推口径。幂律 v∝age^k（k 由历史观测拟合）+ 线性（按最近区间速度）交叉验证。不要再用「当前值×固定倍数」，那会把已发生的增长重复计入。",
+    "targetH": 24,
+    "fitWindowH": [
+      6,
+      30
+    ],
+    "minViews": 5,
+    "fallbackK": 0.82,
+    "methods": [
+      "power",
+      "linear"
+    ]
+  },
+  "probe": {
+    "_说明": "线上核验抓页面的节流参数。打得太快会被网关掐 TLS，别把 sleepSec 调小。",
+    "sleepSec": [
+      3.0,
+      6.0
+    ],
+    "pageWaitMs": 6500,
+    "timeoutMs": 45000
+  },
+  "report": {
+    "topN": 4,
+    "bottomN": 4
+  }
+}

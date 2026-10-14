@@ -1,0 +1,100 @@
+{
+  "_说明": "independent = 每篇文章带自己的 search，素材和标签各自贴题。本文件当前主题：Redis 入门 5 连发，按真实学习顺序递进（认识安装 → 数据类型命令 → 代码实战 → 持久化 → 缓存问题）。换主题请复制 job.all.json 另建文件。",
+
+  "prependFile": "templates\\start.txt",
+  "coverFooter": "<你的昵称>",
+  "maxTags": 7,
+  "category": "redis",
+
+  "search": {
+    "keywords": ["redis 入门", "redis 教程", "redis 基础"],
+    "minViews": 2000,
+    "wantSources": 10,
+    "pages": 3
+  },
+
+  "articles": [
+    {
+      "slug": "redis-intro",
+      "_进度": "第 1 课：Redis 是什么、能解决什么问题、怎么装怎么启动、第一次连上 redis-cli",
+      "search": {
+        "keywords": ["redis 是什么", "redis 安装", "redis 单机安装 linux", "docker 安装 redis", "redis-cli 使用"],
+        "minViews": 2000,
+        "wantSources": 5
+      },
+      "title": "auto",
+      "content": "auto",
+      "tags": "auto",
+      "cover": "",
+      "coverTheme": "blue",
+      "summary": "从零搞懂 Redis：它和 MySQL 各自负责什么、为什么快、最典型的四类使用场景，再到 Linux 源码与 Docker 两种安装方式，redis.conf 里五个先别乱改的参数，最后用 redis-cli 把 ping、set、get、info 逐一跑通，并附上七类启动报错的排查思路。"
+    },
+    {
+      "slug": "redis-data-types",
+      "_进度": "第 2 课：五大数据类型（String / List / Hash / Set / ZSet）与最常用的那几条命令",
+      "search": {
+        "keywords": ["redis 数据类型", "redis 五大数据类型", "redis 常用命令", "redis hash 使用场景", "redis zset 排行榜"],
+        "minViews": 2000,
+        "wantSources": 5
+      },
+      "title": "auto",
+      "content": "auto",
+      "tags": "auto",
+      "cover": "",
+      "coverTheme": "teal",
+      "summary": "用 redis-cli 把 String、List、Hash、Set、ZSet 五种类型一次讲透：每种都给常用命令、真实输出示例、典型使用场景和踩坑点（keys 阻塞线上、大 key、score 精度只有 53 位、lrange 全量拉取），最后给一张“需求 → 类型 → 核心命令”的选型速查表。"
+    },
+    {
+      "slug": "redis-springboot",
+      "_进度": "第 3 课：从命令行走到代码——Spring Boot 整合 Redis，用 RedisTemplate 干正事",
+      "search": {
+        "keywords": ["springboot 整合 redis", "redistemplate 使用", "redis 序列化 乱码", "lettuce jedis 区别", "redis 工具类"],
+        "minViews": 2000,
+        "wantSources": 5
+      },
+      "title": "auto",
+      "content": "auto",
+      "tags": "auto",
+      "cover": "",
+      "coverTheme": "purple",
+      "summary": "从命令行走进代码：Spring Boot 怎么引依赖、写 yml 配置、选 Lettuce 还是 Jedis，重点解决 RedisTemplate 默认 JDK 序列化导致 redis-cli 里全是乱码的问题——配好四个序列化器、封装 RedisUtils、跑通 set/get 双重验证，最后列出八个高频坑。"
+    },
+    {
+      "slug": "redis-persistence",
+      "_进度": "第 4 课：重启后数据还在吗——RDB 与 AOF 两种持久化怎么选、怎么配",
+      "search": {
+        "keywords": ["redis 持久化", "redis rdb aof 区别", "redis 数据备份 恢复", "redis 配置文件 详解", "redis 主从 持久化"],
+        "minViews": 2000,
+        "wantSources": 5
+      },
+      "title": "auto",
+      "content": "auto",
+      "tags": "auto",
+      "cover": "",
+      "coverTheme": "orange",
+      "summary": "重启之后数据还在吗？讲清 RDB 快照与 AOF 日志的原理、触发方式、fork 与写时复制、appendfsync 三档取舍和混合持久化，给出备份与恢复的完整命令序列和迁移时“必须先关 AOF”的坑，最后按“能容忍丢多少数据”给出生产选型建议。"
+    },
+    {
+      "slug": "redis-cache-problems",
+      "_进度": "第 5 课：当缓存用起来之后——过期淘汰策略与缓存穿透/击穿/雪崩",
+      "search": {
+        "keywords": ["redis 缓存穿透", "缓存击穿 雪崩 解决方案", "redis 过期策略 内存淘汰", "redis 布隆过滤器", "redis 缓存一致性"],
+        "minViews": 2000,
+        "wantSources": 5
+      },
+      "title": "auto",
+      "content": "auto",
+      "tags": "auto",
+      "cover": "",
+      "coverTheme": "dark",
+      "summary": "缓存用起来之后才会遇到的麻烦：过期删除与八种内存淘汰策略怎么选，缓存穿透、击穿、雪崩各自的现象、原因与分优先级方案（缓存空值、布隆过滤器、互斥锁、过期时间打散、多级缓存），最后补一节缓存与数据库的一致性，并给三个问题的对比总表。"
+    }
+  ],
+
+  "publish": {
+    "_说明": "on = yes 直接发布到博客；no 只保存到 CSDN 草稿箱（标签/摘要/栏目照样填好）。不写 on 则退回下面的 dryRun/draft。",
+    "on": "no",
+    "dryRun": false,
+    "draft": false
+  }
+}

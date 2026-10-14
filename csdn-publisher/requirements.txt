@@ -1,0 +1,4 @@
+# CSDN Publisher dependencies (Windows + Python 3.10 or newer)
+# playwright drives a real Chrome window; Pillow draws the cover images.
+playwright>=1.40
+Pillow>=10.0
